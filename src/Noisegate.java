@@ -2,6 +2,7 @@ package com.metamage.noisegate;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.animation.AlphaAnimation;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -11,6 +12,8 @@ import java.io.IOException;
 
 public final class Noisegate extends Activity implements Completion
 {
+	
+	private static final int fadeDuration = 200;
 	
 	private static final String urlBase = "http://pony.noisebridge.net/gate/unlock/?key=";
 	
@@ -33,12 +36,23 @@ public final class Noisegate extends Activity implements Completion
 		}
 	}
 	
+	private void fade( View v, int toAlpha )
+	{
+		AlphaAnimation anim = new AlphaAnimation( 1 - toAlpha, toAlpha );
+		
+		anim.setDuration( fadeDuration );
+		
+		v.setVisibility( toAlpha == 0 ? View.INVISIBLE : View.VISIBLE );
+		
+		v.startAnimation( anim );
+	}
+	
 	public void onNumericKey( View v )
 	{
 		if ( code.length() == 0 )
 		{
-			clearKey.setVisibility( View.VISIBLE );
-			enterKey.setVisibility( View.VISIBLE );
+			fade( clearKey, 1 );
+			fade( enterKey, 1 );
 		}
 		
 		Button key = (Button) v;
@@ -50,8 +64,8 @@ public final class Noisegate extends Activity implements Completion
 	{
 		if ( code.length() != 0 )
 		{
-			clearKey.setVisibility( View.INVISIBLE );
-			enterKey.setVisibility( View.INVISIBLE );
+			fade( clearKey, 0 );
+			fade( enterKey, 0 );
 			
 			code = "";
 		}
