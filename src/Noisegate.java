@@ -40,6 +40,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( exception != null )
 		{
+			terminal.setText( R.string.exception );
 		}
 	}
 	
@@ -56,6 +57,8 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void onNumericKey( View v )
 	{
+		terminal.setText( "" );
+		
 		if ( code.length() == 0 )
 		{
 			fade( clearKey, 1 );
@@ -69,6 +72,8 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void onClearKey( View v )
 	{
+		terminal.setText( "" );
+		
 		if ( code.length() != 0 )
 		{
 			fade( clearKey, 0 );
@@ -80,6 +85,8 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void onEnterKey( View v )
 	{
+		terminal.setText( "" );
+		
 		if ( code.length() != 0 )
 		{
 			keypad.setVisibility( View.INVISIBLE );
