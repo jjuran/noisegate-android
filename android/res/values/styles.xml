@@ -19,6 +19,7 @@
 		<item name="android:onClick">onNumericKey</item>
 	</style>
 	<style name="Key.Function">
+		<item name="android:visibility">invisible</item>
 	</style>
 	<style name="Key.Function.Clear">
 		<item name="android:text">@string/clear_label</item>

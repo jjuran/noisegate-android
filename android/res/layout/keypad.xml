@@ -25,9 +25,9 @@
 			<Button style="@style/Key.Numeric" android:text="9" />
 		</LinearLayout>
 		<LinearLayout style="@style/KeypadRow">
-			<Button style="@style/Key.Function.Clear" />
+			<Button style="@style/Key.Function.Clear" android:id="@+id/clear" />
 			<Button style="@style/Key.Numeric" android:text="0" />
-			<Button style="@style/Key.Function.Enter" />
+			<Button style="@style/Key.Function.Enter" android:id="@+id/enter" />
 		</LinearLayout>
 	</LinearLayout>
 </merge>
