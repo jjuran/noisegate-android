@@ -6,11 +6,20 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import java.io.IOException;
 
-public final class Noisegate extends Activity
+
+public final class Noisegate extends Activity implements Completion
 {
 	
 	private String code = "";
+	
+	public void call( IOException exception )
+	{
+		if ( exception != null )
+		{
+		}
+	}
 	
 	public void onNumericKey( View v )
 	{
