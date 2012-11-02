@@ -6,6 +6,7 @@ import android.view.animation.AlphaAnimation;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.io.IOException;
 
@@ -21,6 +22,8 @@ public final class Noisegate extends Activity implements Completion
 	
 	private View clearKey;
 	private View enterKey;
+	
+	private TextView terminal;
 	
 	private String code = "";
 	
@@ -98,6 +101,8 @@ public final class Noisegate extends Activity implements Completion
 		
 		clearKey = findViewById( R.id.clear );
 		enterKey = findViewById( R.id.enter );
+		
+		terminal = (TextView) findViewById( R.id.terminal );
 	}
 	
 }
