@@ -16,13 +16,16 @@
 		<item name="android:textSize">@dimen/key_label</item>
 	</style>
 	<style name="Key.Numeric">
+		<item name="android:onClick">onNumericKey</item>
 	</style>
 	<style name="Key.Function">
 	</style>
 	<style name="Key.Function.Clear">
 		<item name="android:text">@string/clear_label</item>
+		<item name="android:onClick">onClearKey</item>
 	</style>
 	<style name="Key.Function.Enter">
 		<item name="android:text">@string/enter_label</item>
+		<item name="android:onClick">onEnterKey</item>
 	</style>
 </resources>
