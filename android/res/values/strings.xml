@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="app_name">Noisegate (beta)</string>
+	<string name="clear_label">Clear</string>
+	<string name="enter_label">Enter</string>
 </resources>
