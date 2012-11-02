@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="KeypadRow">
+		<item name="android:orientation">horizontal</item>
+		<item name="android:layout_width">fill_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_gravity">center</item>
+	</style>
+	<style name="Key" parent="@android:style/Widget.Button">
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_weight">1</item>
+		<item name="android:layout_margin">4dp</item>
+		<item name="android:background">@drawable/keypad_key</item>
+		<item name="android:textColor">@drawable/control_color</item>
+		<item name="android:textSize">@dimen/key_label</item>
+	</style>
+	<style name="Key.Numeric">
+	</style>
+	<style name="Key.Function">
+	</style>
+	<style name="Key.Function.Clear">
+		<item name="android:text">@string/clear_label</item>
+	</style>
+	<style name="Key.Function.Enter">
+		<item name="android:text">@string/enter_label</item>
+	</style>
+</resources>
