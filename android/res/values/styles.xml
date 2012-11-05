@@ -36,4 +36,9 @@
 		<item name="android:text">@string/enter_label</item>
 		<item name="android:onClick">onEnterKey</item>
 	</style>
+	<style name="Key.Disabled">
+		<item name="android:clickable">false</item>
+		<item name="android:background">@drawable/keypad_key_disabled</item>
+		<item name="android:textColor">@color/disabled_control</item>
+	</style>
 </resources>
