@@ -15,6 +15,7 @@ import java.io.IOException;
 public final class Noisegate extends Activity implements Completion
 {
 	
+	private static final int inputDelay   = 2000;
 	private static final int fadeDuration = 200;
 	
 	private static final String urlBase = "http://pony.noisebridge.net/gate/unlock/?key=";
@@ -148,6 +149,8 @@ public final class Noisegate extends Activity implements Completion
 		final TextView text = (TextView) findViewById( R.id.terminal );
 		
 		tty = new Teletype( text );
+		
+		tty.delayInput( inputDelay );
 		
 		tty.input( getString( R.string.input ) );
 	}
