@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
@@ -37,8 +38,8 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void call( IOException exception )
 	{
-		darkKeypad.setVisibility( View.INVISIBLE );
-		liveKeypad.setVisibility( View.VISIBLE );
+		fadeSubviews( darkKeypad, 0 );
+		fadeSubviews( liveKeypad, 1 );
 		
 		if ( exception != null )
 		{
@@ -55,6 +56,25 @@ public final class Noisegate extends Activity implements Completion
 		v.setVisibility( toAlpha == 0 ? View.INVISIBLE : View.VISIBLE );
 		
 		v.startAnimation( anim );
+	}
+	
+	private void fadeSubviews( View v, int toAlpha )
+	{
+		if ( v instanceof ViewGroup )
+		{
+			ViewGroup vg = (ViewGroup) v;
+			
+			final int n = vg.getChildCount();
+			
+			for ( int i = 0;  i < n;  ++i )
+			{
+				fadeSubviews( vg.getChildAt( i ), toAlpha );
+			}
+		}
+		else
+		{
+			fade( v, toAlpha );
+		}
 	}
 	
 	public void onNumericKey( View v )
@@ -91,8 +111,8 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( code.length() != 0 )
 		{
-			liveKeypad.setVisibility( View.INVISIBLE );
-			darkKeypad.setVisibility( View.VISIBLE );
+			fadeSubviews( liveKeypad, 0 );
+			fadeSubviews( darkKeypad, 1 );
 			
 			unlockWithKey( code );
 		}
