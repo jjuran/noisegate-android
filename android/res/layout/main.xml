@@ -6,4 +6,5 @@
 	>
 	<include layout="@layout/terminal" />
 	<include layout="@layout/live_keypad" />
+	<include layout="@layout/dark_keypad" />
 </FrameLayout>
