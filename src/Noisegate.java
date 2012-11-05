@@ -18,7 +18,7 @@ public final class Noisegate extends Activity implements Completion
 	
 	private static final String urlBase = "http://pony.noisebridge.net/gate/unlock/?key=";
 	
-	private View keypad;
+	private View liveKeypad;
 	
 	private View clearKey;
 	private View enterKey;
@@ -36,7 +36,7 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void call( IOException exception )
 	{
-		keypad.setVisibility( View.VISIBLE );
+		liveKeypad.setVisibility( View.VISIBLE );
 		
 		if ( exception != null )
 		{
@@ -89,7 +89,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( code.length() != 0 )
 		{
-			keypad.setVisibility( View.INVISIBLE );
+			liveKeypad.setVisibility( View.INVISIBLE );
 			
 			unlockWithKey( code );
 		}
@@ -104,7 +104,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		setContentView( R.layout.main );
 		
-		keypad = findViewById( R.id.keypad );
+		liveKeypad = findViewById( R.id.live_keypad );
 		
 		clearKey = findViewById( R.id.clear );
 		enterKey = findViewById( R.id.enter );
