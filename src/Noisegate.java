@@ -43,6 +43,8 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( exception != null )
 		{
+			tty.stopBlinking();
+			
 			tty.setText( getString( R.string.exception ) );
 		}
 	}
@@ -79,6 +81,8 @@ public final class Noisegate extends Activity implements Completion
 	
 	private void updateText()
 	{
+		tty.startBlinking();
+		
 		tty.setText( getString( R.string.prompt ) + code );
 	}
 	
