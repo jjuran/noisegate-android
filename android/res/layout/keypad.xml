@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
-	<LinearLayout
-		android:id="@+id/keypad"
-		android:orientation="vertical"
-		android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:layout_weight="1"
-		android:gravity="center"
-		android:padding="4dp"
-		>
+	<LinearLayout style="@style/Keypad" android:id="@+id/keypad">
 		<LinearLayout style="@style/KeypadRow">
 			<Button style="@style/Key.Numeric" android:text="1" />
 			<Button style="@style/Key.Numeric" android:text="2" />
