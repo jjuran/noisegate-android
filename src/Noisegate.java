@@ -22,7 +22,7 @@ public final class Noisegate extends Activity implements Completion
 	private View liveKeypad;
 	private View darkKeypad;
 	
-	private View clearKey;
+	private View eraseKey;
 	private View enterKey;
 	
 	private TextView terminal;
@@ -83,7 +83,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( code.length() == 0 )
 		{
-			fade( clearKey, 1 );
+			fade( eraseKey, 1 );
 			fade( enterKey, 1 );
 		}
 		
@@ -92,13 +92,13 @@ public final class Noisegate extends Activity implements Completion
 		code += key.getText();
 	}
 	
-	public void onClearKey( View v )
+	public void onEraseKey( View v )
 	{
 		terminal.setText( "" );
 		
 		if ( code.length() != 0 )
 		{
-			fade( clearKey, 0 );
+			fade( eraseKey, 0 );
 			fade( enterKey, 0 );
 			
 			code = "";
@@ -130,7 +130,7 @@ public final class Noisegate extends Activity implements Completion
 		liveKeypad = findViewById( R.id.live_keypad );
 		darkKeypad = findViewById( R.id.dark_keypad );
 		
-		clearKey = findViewById( R.id.clear );
+		eraseKey = findViewById( R.id.erase );
 		enterKey = findViewById( R.id.enter );
 		
 		terminal = (TextView) findViewById( R.id.terminal );

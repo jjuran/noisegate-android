@@ -28,9 +28,9 @@
 	<style name="Key.Function">
 		<item name="android:visibility">invisible</item>
 	</style>
-	<style name="Key.Function.Clear">
-		<item name="android:text">@string/clear_label</item>
-		<item name="android:onClick">onClearKey</item>
+	<style name="Key.Function.Erase">
+		<item name="android:text">@string/erase_label</item>
+		<item name="android:onClick">onEraseKey</item>
 	</style>
 	<style name="Key.Function.Enter">
 		<item name="android:text">@string/enter_label</item>
