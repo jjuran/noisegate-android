@@ -110,6 +110,15 @@ public final class Teletype
 		mark = -1;
 	}
 	
+	void append( CharSequence chars )
+	{
+		text = text + chars;
+		
+		mark = -1;
+		
+		update();
+	}
+	
 	void startBlinking()
 	{
 		if ( cursorState < 0 )

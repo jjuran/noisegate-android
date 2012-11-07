@@ -6,4 +6,7 @@
 		\nEXECUTE COMMAND UNLOCK GATE
 		\nACCESS CODE\u0020
 	</string>
+	<string name="complete">
+		>>> JOB COMPLETE
+	</string>
 </resources>
