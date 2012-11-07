@@ -18,9 +18,9 @@ public final class Teletype
 		textView.setText( "" );
 	}
 	
-	void setText( int stringId )
+	void setText( String s )
 	{
-		textView.setText( stringId );
+		textView.setText( s );
 	}
 	
 }

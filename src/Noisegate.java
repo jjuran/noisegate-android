@@ -43,7 +43,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( exception != null )
 		{
-			tty.setText( R.string.exception );
+			tty.setText( getString( R.string.exception ) );
 		}
 	}
 	
