@@ -98,10 +98,13 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( code.length() != 0 )
 		{
-			fade( eraseKey, 0 );
-			fade( enterKey, 0 );
+			code = code.substring( 0, code.length() - 1 );
 			
-			code = "";
+			if ( code.length() == 0 )
+			{
+				fade( eraseKey, 0 );
+				fade( enterKey, 0 );
+			}
 		}
 	}
 	
