@@ -25,7 +25,7 @@ public final class Noisegate extends Activity implements Completion
 	private View clearKey;
 	private View enterKey;
 	
-	private TextView terminal;
+	private Teletype tty;
 	
 	private String code = "";
 	
@@ -43,7 +43,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( exception != null )
 		{
-			terminal.setText( R.string.exception );
+			tty.setText( R.string.exception );
 		}
 	}
 	
@@ -79,7 +79,7 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void onNumericKey( View v )
 	{
-		terminal.setText( "" );
+		tty.clear();
 		
 		if ( code.length() == 0 )
 		{
@@ -94,7 +94,7 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void onClearKey( View v )
 	{
-		terminal.setText( "" );
+		tty.clear();
 		
 		if ( code.length() != 0 )
 		{
@@ -107,7 +107,7 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void onEnterKey( View v )
 	{
-		terminal.setText( "" );
+		tty.clear();
 		
 		if ( code.length() != 0 )
 		{
@@ -133,7 +133,9 @@ public final class Noisegate extends Activity implements Completion
 		clearKey = findViewById( R.id.clear );
 		enterKey = findViewById( R.id.enter );
 		
-		terminal = (TextView) findViewById( R.id.terminal );
+		final TextView text = (TextView) findViewById( R.id.terminal );
+		
+		tty = new Teletype( text );
 	}
 	
 }
