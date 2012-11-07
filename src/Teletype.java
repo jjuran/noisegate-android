@@ -6,6 +6,8 @@ import android.widget.TextView;
 public final class Teletype
 {
 	
+	private String text = "";
+	
 	private TextView textView;
 	
 	Teletype( TextView tv )
@@ -15,11 +17,15 @@ public final class Teletype
 	
 	void clear()
 	{
+		text = "";
+		
 		textView.setText( "" );
 	}
 	
 	void setText( String s )
 	{
+		text = s;
+		
 		textView.setText( s );
 	}
 	
