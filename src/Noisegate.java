@@ -84,8 +84,6 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void onNumericKey( View v )
 	{
-		updateText();
-		
 		if ( code.length() == 0 )
 		{
 			fade( clearKey, 1 );
@@ -95,12 +93,12 @@ public final class Noisegate extends Activity implements Completion
 		Button key = (Button) v;
 		
 		code += key.getText();
+		
+		updateText();
 	}
 	
 	public void onClearKey( View v )
 	{
-		updateText();
-		
 		if ( code.length() != 0 )
 		{
 			fade( clearKey, 0 );
@@ -108,6 +106,8 @@ public final class Noisegate extends Activity implements Completion
 			
 			code = "";
 		}
+		
+		updateText();
 	}
 	
 	public void onEnterKey( View v )
