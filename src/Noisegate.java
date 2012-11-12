@@ -77,9 +77,14 @@ public final class Noisegate extends Activity implements Completion
 		}
 	}
 	
-	public void onNumericKey( View v )
+	private void updateText()
 	{
 		tty.clear();
+	}
+	
+	public void onNumericKey( View v )
+	{
+		updateText();
 		
 		if ( code.length() == 0 )
 		{
@@ -94,7 +99,7 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void onClearKey( View v )
 	{
-		tty.clear();
+		updateText();
 		
 		if ( code.length() != 0 )
 		{
@@ -107,7 +112,7 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void onEnterKey( View v )
 	{
-		tty.clear();
+		updateText();
 		
 		if ( code.length() != 0 )
 		{
