@@ -17,7 +17,7 @@
 			<Button style="@style/Key.Disabled" android:text="9" />
 		</LinearLayout>
 		<LinearLayout style="@style/KeypadRow">
-			<Button style="@style/Key.Disabled" android:text="@string/clear_label" />
+			<Button style="@style/Key.Disabled" android:text="@string/erase_label" />
 			<Button style="@style/Key.Disabled" android:text="0" />
 			<Button style="@style/Key.Disabled" android:text="@string/enter_label" />
 		</LinearLayout>

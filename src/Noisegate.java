@@ -22,10 +22,10 @@ public final class Noisegate extends Activity implements Completion
 	private View liveKeypad;
 	private View darkKeypad;
 	
-	private View clearKey;
+	private View eraseKey;
 	private View enterKey;
 	
-	private TextView terminal;
+	private Teletype tty;
 	
 	private String code = "";
 	
@@ -43,7 +43,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( exception != null )
 		{
-			terminal.setText( R.string.exception );
+			tty.setText( getString( R.string.exception ) );
 		}
 	}
 	
@@ -77,37 +77,45 @@ public final class Noisegate extends Activity implements Completion
 		}
 	}
 	
+	private void updateText()
+	{
+		tty.setText( getString( R.string.prompt ) + code );
+	}
+	
 	public void onNumericKey( View v )
 	{
-		terminal.setText( "" );
-		
 		if ( code.length() == 0 )
 		{
-			fade( clearKey, 1 );
+			fade( eraseKey, 1 );
 			fade( enterKey, 1 );
 		}
 		
 		Button key = (Button) v;
 		
 		code += key.getText();
+		
+		updateText();
 	}
 	
-	public void onClearKey( View v )
+	public void onEraseKey( View v )
 	{
-		terminal.setText( "" );
-		
 		if ( code.length() != 0 )
 		{
-			fade( clearKey, 0 );
-			fade( enterKey, 0 );
+			code = code.substring( 0, code.length() - 1 );
 			
-			code = "";
+			if ( code.length() == 0 )
+			{
+				fade( eraseKey, 0 );
+				fade( enterKey, 0 );
+			}
 		}
+		
+		updateText();
 	}
 	
 	public void onEnterKey( View v )
 	{
-		terminal.setText( "" );
+		updateText();
 		
 		if ( code.length() != 0 )
 		{
@@ -130,10 +138,14 @@ public final class Noisegate extends Activity implements Completion
 		liveKeypad = findViewById( R.id.live_keypad );
 		darkKeypad = findViewById( R.id.dark_keypad );
 		
-		clearKey = findViewById( R.id.clear );
+		eraseKey = findViewById( R.id.erase );
 		enterKey = findViewById( R.id.enter );
 		
-		terminal = (TextView) findViewById( R.id.terminal );
+		final TextView text = (TextView) findViewById( R.id.terminal );
+		
+		tty = new Teletype( text );
+		
+		updateText();
 	}
 	
 }
