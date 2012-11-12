@@ -141,6 +141,8 @@ public final class Noisegate extends Activity implements Completion
 		final TextView text = (TextView) findViewById( R.id.terminal );
 		
 		tty = new Teletype( text );
+		
+		updateText();
 	}
 	
 }
