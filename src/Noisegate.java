@@ -42,10 +42,12 @@ public final class Noisegate extends Activity implements Completion
 		fadeSubviews( darkKeypad, 0 );
 		fadeSubviews( liveKeypad, 1 );
 		
+		tty.stopBlinking();
+		
+		tty.append( getString( R.string.complete ) );
+		
 		if ( exception != null )
 		{
-			tty.stopBlinking();
-			
 			tty.setText( getString( R.string.exception ) );
 		}
 	}
@@ -121,6 +123,8 @@ public final class Noisegate extends Activity implements Completion
 	public void onEnterKey( View v )
 	{
 		updateText();
+		
+		tty.input( "\n\n" );
 		
 		if ( code.length() != 0 )
 		{
