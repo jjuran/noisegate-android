@@ -28,14 +28,7 @@ public final class Teletype
 			
 			cursorState = 1 - cursorState;
 			
-			CharSequence newText = text;
-			
-			if ( cursorState == 1 )
-			{
-				newText = newText + "\u2588";
-			}
-			
-			textView.setText( newText );
+			update();
 			
 			blinkHandler.postDelayed( this, blinkDelay );
 		}
@@ -44,6 +37,18 @@ public final class Teletype
 	Teletype( TextView tv )
 	{
 		textView = tv;
+	}
+	
+	void update()
+	{
+		CharSequence newText = text;
+		
+		if ( cursorState == 1 )
+		{
+			newText = newText + "\u2588";  // full block
+		}
+		
+		textView.setText( newText );
 	}
 	
 	void clear()
