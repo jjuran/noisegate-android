@@ -83,7 +83,7 @@ public final class Noisegate extends Activity implements Completion
 	{
 		tty.startBlinking();
 		
-		tty.setText( getString( R.string.prompt ) + code );
+		tty.setText( getString( R.string.input ) + code );
 	}
 	
 	public void onNumericKey( View v )
