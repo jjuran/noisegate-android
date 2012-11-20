@@ -11,11 +11,44 @@ public final class Teletype
 	
 	private String text = "";
 	
+	private int mark = -1;
+	
+	private int inputDelay = 0;
+	
 	private TextView textView;
 	
+	private Handler inputHandler = new Handler();
 	private Handler blinkHandler = new Handler();
 	
 	private int cursorState = -1;
+	
+	private Runnable input = new Runnable()
+	{
+		public void run()
+		{
+			if ( mark < 0 )
+			{
+				return;
+			}
+			
+			int delay = inputDelay;
+			
+			inputDelay = 0;
+			
+			if ( delay == 0 )
+			{
+				final boolean newline = text.charAt( mark ) == '\n';
+				
+				delay = newline ? 1000 : 50;
+				
+				++mark;
+				
+				update();
+			}
+			
+			inputHandler.postDelayed( this, delay );
+		}
+	};
 	
 	private Runnable blink = new Runnable()
 	{
@@ -43,6 +76,16 @@ public final class Teletype
 	{
 		CharSequence newText = text;
 		
+		if ( mark >= text.length() )
+		{
+			mark = -1;
+		}
+		
+		if ( mark >= 0 )
+		{
+			newText = text.subSequence( 0, mark );
+		}
+		
 		if ( cursorState == 1 )
 		{
 			newText = newText + "\u2588";  // full block
@@ -63,6 +106,8 @@ public final class Teletype
 		text = s;
 		
 		textView.setText( s );
+		
+		mark = -1;
 	}
 	
 	void startBlinking()
@@ -78,6 +123,38 @@ public final class Teletype
 	void stopBlinking()
 	{
 		cursorState = -1;
+	}
+	
+	void startInput()
+	{
+		if ( mark < 0 )
+		{
+			mark = text.length();
+			
+			inputHandler.post( input );
+		}
+	}
+	
+	void stopInput()
+	{
+		mark = -1;
+		
+		update();
+	}
+	
+	void delayInput( int delay )
+	{
+		inputDelay = delay;
+	}
+	
+	void input( CharSequence chars )
+	{
+		startBlinking();
+		startInput();
+		
+		text = text + chars;
+		
+		update();
 	}
 	
 }

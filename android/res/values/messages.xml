@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string name="exception">NO CARRIER</string>
-	<string name="prompt">
-		ENTER ACCESS CODE:\u0020
+	<string name="input">
+		  REQUEST ACCESS TO GATE PROGRAM
+		\nEXECUTE COMMAND UNLOCK GATE
+		\nACCESS CODE\u0020
 	</string>
 </resources>
