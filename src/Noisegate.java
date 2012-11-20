@@ -149,7 +149,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		tty = new Teletype( text );
 		
-		updateText();
+		tty.input( getString( R.string.input ) );
 	}
 	
 }

@@ -80,5 +80,14 @@ public final class Teletype
 		cursorState = -1;
 	}
 	
+	void input( CharSequence chars )
+	{
+		startBlinking();
+		
+		text = text + chars;
+		
+		update();
+	}
+	
 }
 
