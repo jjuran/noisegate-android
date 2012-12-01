@@ -44,8 +44,6 @@ public class Key extends Button
 	
 	private void beginDrag()
 	{
-		 setBackgroundResource( R.drawable.keypad_key_pressed );
-		 
 		 F.setKeyColor( this, Data.pressedColor );
 	}
 	
@@ -56,22 +54,15 @@ public class Key extends Button
 		if ( inside == outOfBounds )
 		{
 			int color;
-			int drawableResource;
 			
 			if ( inside )
 			{
 				color = Data.pressedColor;
-				
-				drawableResource = R.drawable.keypad_key_pressed;
 			}
 			else
 			{
 				color = Data.normalColor;
-				
-				drawableResource = R.drawable.keypad_key_normal;
 			}
-			
-			setBackgroundResource( drawableResource );
 			
 			F.setKeyColor( this, color );
 			
@@ -83,8 +74,6 @@ public class Key extends Button
 	{
 		if ( !outOfBounds )
 		{
-			setBackgroundResource( R.drawable.keypad_key_normal );
-			
 			F.setKeyColor( this, Data.normalColor );
 			 
 		 	performClick();
