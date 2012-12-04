@@ -41,7 +41,6 @@ public final class Noisegate extends Activity implements Completion
 	public void call( IOException exception )
 	{
 		fadeSubviews( darkKeypad, 0 );
-		fadeSubviews( liveKeypad, 1 );
 		
 		tty.stopBlinking();
 		
@@ -129,7 +128,6 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( code.length() != 0 )
 		{
-			fadeSubviews( liveKeypad, 0 );
 			fadeSubviews( darkKeypad, 1 );
 			
 			unlockWithKey( code );
