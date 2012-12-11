@@ -154,6 +154,8 @@ public final class Noisegate extends Activity implements Completion
 		eraseKey = (Key) findViewById( R.id.erase );
 		enterKey = (Key) findViewById( R.id.enter );
 		
+		eraseKey.setCounterpart( R.id._X );
+		
 		final TextView text = (TextView) findViewById( R.id.terminal );
 		
 		tty = new Teletype( text );
