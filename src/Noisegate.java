@@ -24,8 +24,8 @@ public final class Noisegate extends Activity implements Completion
 	private View liveKeypad;
 	private View fakeKeypad;
 	
-	private View eraseKey;
-	private View enterKey;
+	private Key eraseKey;
+	private Key enterKey;
 	
 	private Teletype tty;
 	
@@ -151,8 +151,8 @@ public final class Noisegate extends Activity implements Completion
 		liveKeypad = findViewById( R.id.live_keypad );
 		fakeKeypad = findViewById( R.id.fake_keypad );
 		
-		eraseKey = findViewById( R.id.erase );
-		enterKey = findViewById( R.id.enter );
+		eraseKey = (Key) findViewById( R.id.erase );
+		enterKey = (Key) findViewById( R.id.enter );
 		
 		final TextView text = (TextView) findViewById( R.id.terminal );
 		
