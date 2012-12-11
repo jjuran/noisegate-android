@@ -2,6 +2,7 @@ package com.metamage.noisegate;
 
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.Button;
 
 
 final public class F
@@ -18,6 +19,11 @@ final public class F
 		v.setVisibility( toAlpha == 0 ? View.INVISIBLE : View.VISIBLE );
 		
 		v.startAnimation( anim );
+	}
+	
+	public static void setKeyColor( Button key, int color )
+	{
+		key.setTextColor( color );
 	}
 	
 }

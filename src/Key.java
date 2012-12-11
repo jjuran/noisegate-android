@@ -37,7 +37,7 @@ public class Key extends Button
 	{
 		 setBackgroundResource( R.drawable.keypad_key_pressed );
 		 
-		 setTextColor( Data.pressedColor );
+		 F.setKeyColor( this, Data.pressedColor );
 	}
 	
 	private void updateDrag( float x, float y )
@@ -64,7 +64,7 @@ public class Key extends Button
 			
 			setBackgroundResource( drawableResource );
 			
-			setTextColor( color );
+			F.setKeyColor( this, color );
 			
 			outOfBounds = !inside;
 		}
@@ -76,7 +76,7 @@ public class Key extends Button
 		{
 			setBackgroundResource( R.drawable.keypad_key_normal );
 			
-			setTextColor( Data.normalColor );
+			F.setKeyColor( this, Data.normalColor );
 			 
 		 	performClick();
 		}
