@@ -1,5 +1,6 @@
 package com.metamage.noisegate;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -13,6 +14,8 @@ public class Key extends Button
 	private boolean dragging    = false;
 	private boolean outOfBounds = false;
 	
+	private View counterpart;
+	
 	public Key( Context context, AttributeSet attrs, int defStyle )
 	{
 		super( context, attrs, defStyle );
@@ -21,6 +24,30 @@ public class Key extends Button
 	public Key( Context context, AttributeSet attrs )
 	{
 		super( context, attrs );
+	}
+	
+	public void setCounterpart( int id )
+	{
+		Activity context = (Activity) getContext();
+		
+		counterpart = context.findViewById( id );
+	}
+	
+	private Button getCounterpart()
+	{
+		if ( counterpart == null )
+		{
+			final int i = Character.digit( getText().charAt( 0 ), 10 );
+			
+			if ( i >= 0 )
+			{
+				final int id = Data.fakeKeyIds[ i ];
+				
+				setCounterpart( id );
+			}
+		}
+		
+		return (Button) counterpart;
 	}
 	
 	public boolean isDragging()
