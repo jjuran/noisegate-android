@@ -40,7 +40,5 @@
 	<style name="Key.Disabled">
 		<item name="android:clickable">false</item>
 		<item name="android:visibility">invisible</item>
-		<item name="android:background">@drawable/keypad_key_normal</item>
-		<item name="android:textColor">@color/disabled_control</item>
 	</style>
 </resources>
