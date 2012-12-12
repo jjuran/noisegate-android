@@ -66,6 +66,8 @@ public final class Noisegate extends Activity implements Completion
 		}
 		else
 		{
+			F.setKeyColor( (Button) v, getResources().getInteger( R.color.disabled_control ) );
+			
 			F.fadeViewToAlpha( v, toAlpha );
 		}
 	}
