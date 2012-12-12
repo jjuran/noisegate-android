@@ -104,6 +104,15 @@ public class Key extends Button
 			F.setKeyColor( this, Data.normalColor );
 			 
 		 	performClick();
+		 	
+		 	Button fakeKey = getCounterpart();
+		 	
+		 	if ( fakeKey != null )
+		 	{
+				F.setKeyColor( fakeKey, Data.pressedColor );
+				
+				F.fadeViewToAlpha( fakeKey, 0 );
+		 	}
 		}
 	}
 	
