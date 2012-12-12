@@ -1,6 +1,7 @@
 package com.metamage.noisegate;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.View;
@@ -141,6 +142,11 @@ public final class Noisegate extends Activity implements Completion
 		super.onCreate( savedInstanceState );
 		
 		requestWindowFeature( Window.FEATURE_NO_TITLE );
+		
+		final Resources resources = getResources();
+		
+		Data.normalColor  = resources.getInteger( R.color.normal_control  );
+		Data.pressedColor = resources.getInteger( R.color.pressed_control );
 		
 		setContentView( R.layout.main );
 		
