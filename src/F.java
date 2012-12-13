@@ -2,6 +2,8 @@ package com.metamage.noisegate;
 
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.graphics.LightingColorFilter;
+import android.graphics.drawable.GradientDrawable;
 import android.widget.Button;
 
 
@@ -23,6 +25,10 @@ final public class F
 	
 	public static void setKeyColor( Button key, int color )
 	{
+		GradientDrawable background = (GradientDrawable) key.getBackground();
+		
+		background.setColorFilter( new LightingColorFilter( color, 0 ) );
+		
 		key.setTextColor( color );
 	}
 	
