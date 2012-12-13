@@ -16,11 +16,20 @@ public class Key extends Button
 	public Key( Context context, AttributeSet attrs, int defStyle )
 	{
 		super( context, attrs, defStyle );
+		
+		init();
 	}
 	
 	public Key( Context context, AttributeSet attrs )
 	{
 		super( context, attrs );
+		
+		init();
+	}
+	
+	private void init()
+	{
+		F.setKeyColor( this, Data.normalColor );
 	}
 	
 	public boolean isDragging()

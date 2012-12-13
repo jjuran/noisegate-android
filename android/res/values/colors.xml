@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+	<color name="white">#ffffff</color>
 	<color name="normal_control">#ff0000</color>
 	<color name="pressed_control">#00ffff</color>
 	<color name="disabled_control">#440000</color>
