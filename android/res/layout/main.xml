@@ -10,7 +10,7 @@
 		android:layout_height="wrap_content"
 		>
 		<include layout="@layout/live_keypad" />
-		<include layout="@layout/dark_keypad" />
+		<include layout="@layout/fake_keypad" />
 	</FrameLayout>
 	<View
 		android:layout_width="wrap_content"

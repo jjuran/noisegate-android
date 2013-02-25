@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+	<LinearLayout style="@style/Keypad" android:id="@+id/fake_keypad">
+		<LinearLayout style="@style/KeypadRow">
+			<Button style="@style/Key.Disabled" android:id="@+id/_1" android:text="1" />
+			<Button style="@style/Key.Disabled" android:id="@+id/_2" android:text="2" />
+			<Button style="@style/Key.Disabled" android:id="@+id/_3" android:text="3" />
+		</LinearLayout>
+		<LinearLayout style="@style/KeypadRow">
+			<Button style="@style/Key.Disabled" android:id="@+id/_4" android:text="4" />
+			<Button style="@style/Key.Disabled" android:id="@+id/_5" android:text="5" />
+			<Button style="@style/Key.Disabled" android:id="@+id/_6" android:text="6" />
+		</LinearLayout>
+		<LinearLayout style="@style/KeypadRow">
+			<Button style="@style/Key.Disabled" android:id="@+id/_7" android:text="7" />
+			<Button style="@style/Key.Disabled" android:id="@+id/_8" android:text="8" />
+			<Button style="@style/Key.Disabled" android:id="@+id/_9" android:text="9" />
+		</LinearLayout>
+		<LinearLayout style="@style/KeypadRow">
+			<Button style="@style/Key.Disabled" android:id="@+id/_X" android:text="@string/erase_label" />
+			<Button style="@style/Key.Disabled" android:id="@+id/_0" android:text="0" />
+			<Button style="@style/Key.Disabled"                      android:text="@string/enter_label" />
+		</LinearLayout>
+	</LinearLayout>
+</merge>

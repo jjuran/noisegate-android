@@ -21,10 +21,10 @@ public final class Noisegate extends Activity implements Completion
 	private static final String urlBase = "http://pony.noisebridge.net/gate/unlock/?key=";
 	
 	private View liveKeypad;
-	private View darkKeypad;
+	private View fakeKeypad;
 	
-	private View eraseKey;
-	private View enterKey;
+	private Key eraseKey;
+	private Key enterKey;
 	
 	private Teletype tty;
 	
@@ -39,8 +39,7 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void call( IOException exception )
 	{
-		fadeSubviews( darkKeypad, 0 );
-		fadeSubviews( liveKeypad, 1 );
+		fadeSubviews( fakeKeypad, 0 );
 		
 		tty.stopBlinking();
 		
@@ -117,8 +116,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( code.length() != 0 )
 		{
-			fadeSubviews( liveKeypad, 0 );
-			fadeSubviews( darkKeypad, 1 );
+			fadeSubviews( fakeKeypad, 1 );
 			
 			unlockWithKey( code );
 		}
@@ -139,10 +137,12 @@ public final class Noisegate extends Activity implements Completion
 		setContentView( R.layout.main );
 		
 		liveKeypad = findViewById( R.id.live_keypad );
-		darkKeypad = findViewById( R.id.dark_keypad );
+		fakeKeypad = findViewById( R.id.fake_keypad );
 		
-		eraseKey = findViewById( R.id.erase );
-		enterKey = findViewById( R.id.enter );
+		eraseKey = (Key) findViewById( R.id.erase );
+		enterKey = (Key) findViewById( R.id.enter );
+		
+		eraseKey.setCounterpart( R.id._X );
 		
 		final TextView text = (TextView) findViewById( R.id.terminal );
 		
