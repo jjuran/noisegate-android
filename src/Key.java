@@ -1,5 +1,6 @@
 package com.metamage.noisegate;
 
+import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -13,14 +14,49 @@ public class Key extends Button
 	private boolean dragging    = false;
 	private boolean outOfBounds = false;
 	
+	private View counterpart;
+	
 	public Key( Context context, AttributeSet attrs, int defStyle )
 	{
 		super( context, attrs, defStyle );
+		
+		init();
 	}
 	
 	public Key( Context context, AttributeSet attrs )
 	{
 		super( context, attrs );
+		
+		init();
+	}
+	
+	private void init()
+	{
+		F.setKeyColor( this, Data.normalColor );
+	}
+	
+	public void setCounterpart( int id )
+	{
+		Activity context = (Activity) getContext();
+		
+		counterpart = context.findViewById( id );
+	}
+	
+	private Button getCounterpart()
+	{
+		if ( counterpart == null )
+		{
+			final int i = Character.digit( getText().charAt( 0 ), 10 );
+			
+			if ( i >= 0 )
+			{
+				final int id = Data.fakeKeyIds[ i ];
+				
+				setCounterpart( id );
+			}
+		}
+		
+		return (Button) counterpart;
 	}
 	
 	public boolean isDragging()
@@ -35,9 +71,7 @@ public class Key extends Button
 	
 	private void beginDrag()
 	{
-		 setBackgroundResource( R.drawable.keypad_key_pressed );
-		 
-		 setTextColor( Data.pressedColor );
+		 F.setKeyColor( this, Data.pressedColor );
 	}
 	
 	private void updateDrag( float x, float y )
@@ -47,24 +81,17 @@ public class Key extends Button
 		if ( inside == outOfBounds )
 		{
 			int color;
-			int drawableResource;
 			
 			if ( inside )
 			{
 				color = Data.pressedColor;
-				
-				drawableResource = R.drawable.keypad_key_pressed;
 			}
 			else
 			{
 				color = Data.normalColor;
-				
-				drawableResource = R.drawable.keypad_key_normal;
 			}
 			
-			setBackgroundResource( drawableResource );
-			
-			setTextColor( color );
+			F.setKeyColor( this, color );
 			
 			outOfBounds = !inside;
 		}
@@ -74,11 +101,18 @@ public class Key extends Button
 	{
 		if ( !outOfBounds )
 		{
-			setBackgroundResource( R.drawable.keypad_key_normal );
-			
-			setTextColor( Data.normalColor );
+			F.setKeyColor( this, Data.normalColor );
 			 
 		 	performClick();
+		 	
+		 	Button fakeKey = getCounterpart();
+		 	
+		 	if ( fakeKey != null )
+		 	{
+				F.setKeyColor( fakeKey, Data.pressedColor );
+				
+				F.fadeViewToAlpha( fakeKey, 0 );
+		 	}
 		}
 	}
 	

@@ -3,7 +3,6 @@ package com.metamage.noisegate;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.view.animation.AlphaAnimation;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -22,10 +21,10 @@ public final class Noisegate extends Activity implements Completion
 	private static final String urlBase = "http://pony.noisebridge.net/gate/unlock/?key=";
 	
 	private View liveKeypad;
-	private View darkKeypad;
+	private View fakeKeypad;
 	
-	private View eraseKey;
-	private View enterKey;
+	private Key eraseKey;
+	private Key enterKey;
 	
 	private Teletype tty;
 	
@@ -40,8 +39,7 @@ public final class Noisegate extends Activity implements Completion
 	
 	public void call( IOException exception )
 	{
-		fadeSubviews( darkKeypad, 0 );
-		fadeSubviews( liveKeypad, 1 );
+		fadeSubviews( fakeKeypad, 0 );
 		
 		tty.stopBlinking();
 		
@@ -51,17 +49,6 @@ public final class Noisegate extends Activity implements Completion
 		{
 			tty.setText( getString( R.string.exception ) );
 		}
-	}
-	
-	private void fade( View v, int toAlpha )
-	{
-		AlphaAnimation anim = new AlphaAnimation( 1 - toAlpha, toAlpha );
-		
-		anim.setDuration( fadeDuration );
-		
-		v.setVisibility( toAlpha == 0 ? View.INVISIBLE : View.VISIBLE );
-		
-		v.startAnimation( anim );
 	}
 	
 	private void fadeSubviews( View v, int toAlpha )
@@ -79,7 +66,9 @@ public final class Noisegate extends Activity implements Completion
 		}
 		else
 		{
-			fade( v, toAlpha );
+			F.setKeyColor( (Button) v, getResources().getInteger( R.color.disabled_control ) );
+			
+			F.fadeViewToAlpha( v, toAlpha );
 		}
 	}
 	
@@ -94,8 +83,8 @@ public final class Noisegate extends Activity implements Completion
 	{
 		if ( code.length() == 0 )
 		{
-			fade( eraseKey, 1 );
-			fade( enterKey, 1 );
+			F.fadeViewToAlpha( eraseKey, 1 );
+			F.fadeViewToAlpha( enterKey, 1 );
 		}
 		
 		Button key = (Button) v;
@@ -113,8 +102,8 @@ public final class Noisegate extends Activity implements Completion
 			
 			if ( code.length() == 0 )
 			{
-				fade( eraseKey, 0 );
-				fade( enterKey, 0 );
+				F.fadeViewToAlpha( eraseKey, 0 );
+				F.fadeViewToAlpha( enterKey, 0 );
 			}
 		}
 		
@@ -129,8 +118,7 @@ public final class Noisegate extends Activity implements Completion
 		
 		if ( code.length() != 0 )
 		{
-			fadeSubviews( liveKeypad, 0 );
-			fadeSubviews( darkKeypad, 1 );
+			fadeSubviews( fakeKeypad, 1 );
 			
 			unlockWithKey( code );
 		}
@@ -151,10 +139,12 @@ public final class Noisegate extends Activity implements Completion
 		setContentView( R.layout.main );
 		
 		liveKeypad = findViewById( R.id.live_keypad );
-		darkKeypad = findViewById( R.id.dark_keypad );
+		fakeKeypad = findViewById( R.id.fake_keypad );
 		
-		eraseKey = findViewById( R.id.erase );
-		enterKey = findViewById( R.id.enter );
+		eraseKey = (Key) findViewById( R.id.erase );
+		enterKey = (Key) findViewById( R.id.enter );
+		
+		eraseKey.setCounterpart( R.id._X );
 		
 		final TextView text = (TextView) findViewById( R.id.terminal );
 		
